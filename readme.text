@@ -1,0 +1,13 @@
+attend with id
+{
+    "date":"12/12/2023",
+    "p":"N"
+}
+addmition students
+{
+  "name":"sajid",
+  "class":"bca 1st",
+  "father":"md muddin",
+  "mobile":"8978567867",
+  "attend":[]
+}
