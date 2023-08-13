@@ -29,52 +29,9 @@ exports.studenPayment = async (req, res) => {
   try {
     const _id = req.params;
     const savedata = new studentPaySchema({
-      name: req.body.name,
-      userid: _id,
-      payment:[
-        {
-          month:"July",
-          paid:0,
-          date:"",
-          Types:"non"
-
-        },
-        {
-          month:"August",
-          paid:0,
-          date:"",
-          Types:"non"
-
-        },
-        {
-          month:"september",
-          paid:0,
-          date:"",
-          Types:"non"
-
-        },
-        {
-          month:"October",
-          paid:0,
-          date:"",
-          Types:"non"
-
-        },
-        {
-          month:"november",
-          paid:0,
-          date:"",
-          Types:"non"
-
-        },
-        {
-          month:"december",
-          paid:0,
-          date:"",
-          Types:"non"
-
-        },
-      ],
+      userid:_id,
+      name:req.body.name,
+      payments:req.body.payment,
     });
 
     savedata.save().then((data) => {
@@ -97,6 +54,21 @@ exports.studenAttend = async (req, res) => {
     const attendData = studentdetails.attend;
     Object.assign(studentdetails, { attend: [...attendData, req.body] });
     studentdetails.save();
+    res.json({
+      status: 201,
+      message: "successfull attendance save",
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+exports.studenPay = async (req, res) => {
+  try {
+    const _id = req.params;
+    const paydetails = await studentPaySchema.findById(_id);
+    const payData = paydetails.payments;
+    Object.assign(paydetails, { payments: [...payData, req.body] });
+    paydetails.save();
     res.json({
       status: 201,
       message: "successfull attendance save",
@@ -133,6 +105,18 @@ exports.studenList = async (req, res) => {
   try {
     const _id = req.params;
     const studentdetails = await studentSchema.find();
+    res.json({
+      status: 200,
+      students: studentdetails,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+exports.PaymentList = async (req, res) => {
+  try {
+    const _id = req.params;
+    const studentdetails = await studentPaySchema.find();
     res.json({
       status: 200,
       students: studentdetails,

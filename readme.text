@@ -1,9 +1,11 @@
 attend with id
+http://localhost:8000/api/v3/attend/64d8dd6b1e51ef32c3d0d583
 {
     "date":"12/12/2023",
     "p":"N"
 }
 addmition students
+http://localhost:8000/api/v3/admission
 {
   "name":"sajid",
   "class":"bca 1st",
@@ -11,3 +13,26 @@ addmition students
   "mobile":"8978567867",
   "attend":[]
 }
+updat student
+http://localhost:8000/api/v3/admission/64d628bc6f621761b23eb329
+{
+   "name":"sajid",
+  "class":"bca 1st",
+  "father":"md muddin",
+  "mobile":"8978567867",
+}
+pay
+http://localhost:8000/api/v3/pay/64d8dd6b1e51ef32c3d0d583
+{
+    "date": "Fri Aug 11 2023",
+    "pay":900,
+    "type":"phonepe"
+}
+http://localhost:8000/api/v3/payment/64d8dd6b1e51ef32c3d0d583
+{  
+  "name": "vikash ram",
+  "payment":[]
+}
+
+get pay List 
+http://localhost:8000/api/v3/paystudent
